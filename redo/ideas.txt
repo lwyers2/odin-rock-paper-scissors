@@ -1,0 +1,16 @@
+Rock paper Scissors - composite parts
+
+//need to
+
+Click on start game then show game - everything else should be hidden before this
+
+hover effect on box choice
+
+game starts enter name?
+
+get the result of RPS choice and update placeholder
+
+Confirm or cancel
+
+update score
+

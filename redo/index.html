@@ -11,27 +11,50 @@
 
 <body>
 
+
     <div class="container">
         <div class="title">
 
             <h1>ROCK PAPER SCISSORS</h1>
 
         </div>
-        <div class="boxes">
-            <div class="box">New Game?</div>
+
+
+
+
+        <div class="boxes" id="new-game">
+            <div class="box">Start Game?</div>
+
         </div>
-        <div class="boxes">
-            <div class="box">Rock</div>
-            <div class="box">Paper</div>
-            <div class="box">Scissors</div>
+
+        <div class="player-choice">
+            <h2>Choose your weapon</h2>
+            <div class="boxes">
+                <div class="box" id="rock">Rock</div>
+                <div class="box" id="paper">Paper</div>
+                <div class="box" id="scissors">Scissors</div>
+            </div>
         </div>
+
+        <div class="confirm">
+            <h2>Choice: PlaceHolder?</h2>
+            <div class="boxes">
+                <div class="box" id="confirm">Confirm</div>
+                <div class="box" id="cancel">Cancel</div>
+            </div>
+        </div>
+
         <div class="scores">
-            <div class="player-score">Player Score: </div>
-            <div class="cpu-Score">Computer Score: </div>
+            <div class="boxes">
+
+                <div class="box" id="player-score">PlayerScore:</div>
+                <div class="box" id="player-score">CPUScore:</div>
+
+            </div>
         </div>
     </div>
 
-
+    <script src="app.js"></script>
 </body>
 
 </html>
