@@ -121,6 +121,14 @@ function createConfirmation() {
     choiceTitle.appendChild(choiceTitleText);
     confirm.appendChild(choiceTitle);
 
+
+    let cpuChoiceTitle = document.createElement('h2');
+    cpuChoiceTitle.className = "cpu-choice-title";
+
+    let cpuChoiceTitleText = document.createTextNode('CPU Choice: PlaceHolder?');
+    cpuChoiceTitle.appendChild(cpuChoiceTitleText);
+    confirm.appendChild(cpuChoiceTitle);
+
     let confirmBox = document.createElement('div');
     confirmBox.className = 'box';
     confirmBox.id = "confirm";
@@ -162,8 +170,8 @@ function createScoreBoard() {
 
     let playerScore = document.createElement('div');
     playerScore.className = 'box';
-    playerScore.id = '0';
-    let playerText = document.createTextNode('PlayerScore: ');
+    playerScore.id = 'player-score';
+    let playerText = document.createTextNode('0');
     playerScore.appendChild(playerText);
 
 
@@ -171,8 +179,8 @@ function createScoreBoard() {
 
     let cpuScore = document.createElement('div');
     cpuScore.className = 'box';
-    cpuScore.id = "0";
-    let cpuText = document.createTextNode('CPUScore: ');
+    cpuScore.id = "cpu-score";
+    let cpuText = document.createTextNode('0');
     cpuScore.appendChild(cpuText);
 
 
@@ -195,10 +203,22 @@ function updatePlayerChoice(choice) {
 }
 
 
+function updateCpuChoice(choice) {
+    let choiceDiv = document.querySelector(".cpu-choice-title");
+    let confirmBox = document.querySelector('#confirm');
+    confirmBox.style = "display:block";
+    choiceDiv.id = choice;
+    choiceDiv.textContent = "CPU Choice: " + choice;
+}
+
+
+
+
 function playRound(choice) {
 
     let playerChoice = choice;
     let cpuChoice = getCpuChoice();
+    updateCpuChoice(cpuChoice);
 
     console.log("Player Chose: " + playerChoice + " CPU Chose: " + cpuChoice);
 
@@ -216,7 +236,7 @@ function getCpuChoice() {
 
     let max = 2;
     let random = Math.floor(Math.random() * (max + 1));
-    console.log
+
 
     return choices[random];
 
@@ -245,9 +265,56 @@ function decideWinner(playerChoice, cpuChoice) {
 
 function updateScore(winner) {
 
+    let playerScore = document.querySelector('#player-score');
+
+    let cpuScore = document.querySelector('#cpu-score');
+
+    let actualPlayerScore = parseInt(playerScore.innerHTML);
+
+    let actualCpuScore = parseInt(cpuScore.innerHTML);
+
+
+
+
+
+
     if (winner == 'player') {
 
+        playerScore.innerHTML = actualPlayerScore + 1;
+        if (actualPlayerScore + 1 == 5) {
+            endGame('Player', actualCpuScore + 1);
+        }
+
+    } else if (winner == 'cpu') {
+        cpuScore.innerHTML = actualCpuScore + 1;
+        if (actualCpuScore + 1 == 5) {
+            endGame('Computer', actualCpuScore + 1);
+        }
+    } else if (winner == 'draw') {
+
     }
+
+}
+
+function endGame(winner, score) {
+    let playerChoice = document.querySelector('.player-choice');
+    let confirm = document.querySelector('.confirm');
+    let scores = document.querySelector('.scores');
+    playerChoice.remove();
+    confirm.remove();
+    scores.remove();
+
+    let showWinner = document.createElement('div');
+    showWinner.className = 'winner';
+    let winnerText = document.createTextNode('Winner: ' + winner + " Score: " + score);
+    showWinner.appendChild(winnerText);
+
+    let container = document.querySelector(".container");
+    container.appendChild(showWinner);
+
+
+
+
 
 }
 
