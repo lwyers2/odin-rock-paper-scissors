@@ -53,17 +53,17 @@ function createPlayerChoiceBox() {
     boxes.id = "player-choice";
 
     let rock = document.createElement('div');
-    rock.className = "box";
+    rock.className = "small-box";
     let rockText = document.createTextNode("Rock");
     rock.appendChild(rockText);
 
     let paper = document.createElement('div');
-    paper.className = "box";
+    paper.className = "small-box";
     let paperText = document.createTextNode("Paper");
     paper.appendChild(paperText);
 
     let scissors = document.createElement('div');
-    scissors.className = "box";
+    scissors.className = "small-box";
     let scissorsText = document.createTextNode("Scissors");
     scissors.appendChild(scissorsText);
 
@@ -114,7 +114,7 @@ function createConfirmation() {
     let container = document.querySelector(".container");
     container.appendChild(confirm);
 
-    let choiceTitle = document.createElement('h2');
+    let choiceTitle = document.createElement('h3');
     choiceTitle.className = "player-choice-title";
 
     let choiceTitleText = document.createTextNode('Choice: PlaceHolder?');
@@ -122,15 +122,24 @@ function createConfirmation() {
     confirm.appendChild(choiceTitle);
 
 
-    let cpuChoiceTitle = document.createElement('h2');
+    let cpuChoiceTitle = document.createElement('h3');
     cpuChoiceTitle.className = "cpu-choice-title";
 
     let cpuChoiceTitleText = document.createTextNode('CPU Choice: PlaceHolder?');
     cpuChoiceTitle.appendChild(cpuChoiceTitleText);
     confirm.appendChild(cpuChoiceTitle);
 
+
+    let winnerTitle = document.createElement('h4');
+    winnerTitle.className = "round-winner";
+
+    let winnerTitleText = document.createTextNode('Round Winner');
+    winnerTitle.appendChild(winnerTitleText);
+    confirm.appendChild(winnerTitle);
+
+
     let confirmBox = document.createElement('div');
-    confirmBox.className = 'box';
+    confirmBox.className = 'small-box';
     confirmBox.id = "confirm";
     let confirmText = document.createTextNode('Confirm');
     confirmBox.appendChild(confirmText);
@@ -169,7 +178,7 @@ function createScoreBoard() {
     container.appendChild(scores);
 
     let playerScore = document.createElement('div');
-    playerScore.className = 'box';
+    playerScore.className = 'score-box';
     playerScore.id = 'player-score';
     let playerText = document.createTextNode('0');
     playerScore.appendChild(playerText);
@@ -178,7 +187,7 @@ function createScoreBoard() {
 
 
     let cpuScore = document.createElement('div');
-    cpuScore.className = 'box';
+    cpuScore.className = 'score-box';
     cpuScore.id = "cpu-score";
     let cpuText = document.createTextNode('0');
     cpuScore.appendChild(cpuText);
