@@ -1,461 +1,362 @@
-/*
-Randomly generates and R, P, or S (1-3)
-    Random number generator
-    Assign to string
-Player Input
-    input and store value(case insensitive)
-Game
-    Compare two results
-    Print result
 
-*/
 
-// let rock = document.getElementById("rock");
-// let paper = document.getElementById("paper");
-// let scissors = document.getElementById("scissors");
 
+createStartGameBox(true);
 
+//createConfirmation();
 
 
 
+function createStartGameBox(newGame) {
 
 
+    // createBoxes('new-game');
+    let boxes = document.createElement('div');
+    boxes.className = "boxes";
 
 
 
-/*
-Rock beats scissors
-scissors beat paper
-paper beats rock
-*/
+    let startGame = document.createElement('div');
+    startGame.className = "box";
+    startGame.id = "start-game";
+    let text = document.createTextNode("Start Game?");
+    startGame.appendChild(text);
 
+    let container = document.querySelector(".container");
+    container.appendChild(boxes);
 
-// function userPlay(choice) {
+    boxes.appendChild(startGame);
 
-
-
-
-//     if (choice.toLowerCase() === "rock") {
-//         return "Rock";
-//     } else if (choice.toLowerCase() === "paper") {
-//         return "Paper";
-//     } else if (choice.toLowerCase() === "scissors") {
-//         return "Scissors";
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-// function game() {
-
-//     console.log("Loading game....")
-
-//     let userScore = 0;
-//     let computerScore = 0;
-
-//     for (let i = 0; i <= 4; i++) {
-
-
-//         let computerChoice = computerPlay();
-
-
-
-//         console.log(`You picked ${playerChoice}`);
-//         console.log(`Computer picked ${computerChoice}`);
-
-
-//         if (computerChoice == playerChoice) {
-//             console.log(`You both picked "${computerChoice}"... Draw!`);
-//             userScore++;
-//             computerScore++;
-//         } else if (computerChoice === "Rock" && playerChoice === "Scissors") {
-//             console.log("Computer Wins");
-//             computerScore++;
-//         } else if (playerChoice === "Rock" && computerChoice === "Scissors") {
-//             console.log("player Wins");
-//             userScore++;
-//         } else if (playerChoice === "Scissors" && computerChoice === "Paper") {
-//             console.log("player Wins");
-//             userScore++;
-//         } else if (computerChoice === "Scissors" && playerChoice === "Paper") {
-//             console.log("computer Wins");
-//             computerScore++;
-//         } else if (computerChoice === "Paper" && playerChoice === "Rock") {
-//             console.log("computer Wins");
-//             computerScore++;
-//         } else if (playerChoice === "Paper" && computerChoice === "Rock") {
-//             console.log("player Wins");
-//             userScore++;
-//         }
-
-//         console.log(`Computer Score: ${computerScore} Player Score: ${userScore}`)
-
-
-//     }
-
-//     if (computerScore > userScore) {
-//         console.log(`You lose by ${computerScore - userScore} points`);
-//     } else if (userScore > computerScore) {
-//         console.log(`You win by ${userScore - computerScore} points`);
-//     } else {
-//         console.log(`It's a draw.. you both sored ${userScore}`);
-//     }
-
-// }
-
-
-// this is different
-
-// game();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let playerScore = document.getElementsByClassName("player");
-// let cpuScore = document.getElementsByClassName("cpu");
-
-
-
-
-
-// let body = document.querySelector("body");
-
-
-
-// let rock = document.getElementById("rock");
-// let paper = document.getElementById("paper");
-// let scissors = document.getElementById("scissors");
-
-
-
-
-
-
-
-// function playerChoice() {
-//     let playerChoice = "";
-//     let choosen = document.createElement('div');
-//     let choosenText = document.createTextNode(playerChoice);
-//     let showChoice = document.querySelector(`.choice`);
-
-
-
-
-
-
-//     rock.addEventListener("click", () => {
-//         playerChoice = "rock";
-//         choosen.appendChild(choosenText);
-
-
-//     }
-//     );
-
-//     paper.addEventListener("click", () => {
-//         playerChoice = "paper";
-//         choosen.appendChild(choosenText);
-
-//     }
-//     );
-
-//     scissors.addEventListener("click", () => {
-//         playerChoice = "scissors"
-//         choosen.appendChild(choosenText);
-
-
-//     }
-//     );
-
-
-
-
-//     console.log("hello" + playerChoice);
-
-
-//     showChoice.insertBefore(choosen, showChoice.childNodes[0]);
-
-
-
-
-
-
-//     return playerChoice;
-
-// }
-
-// playerChoice();() => playerChoice = "rock");
-
-
-
-
-function game() {
-
-    //functions
-    function gameChoice(choice) {
-
-        if (choice === "rock") {
-            console.log("being called")
-            submit("player", "Rock");
-        } else if (choice === "paper") {
-            submit("player", "Paper");
-        } else if (choice === "scissors") {
-            submit("player", "Scissors");
-        }
-    }
-    function submit(player, submitChoice) {
-
-        if (player === "player") {
-            let pick = document.querySelector(".pick");
-
-            if (!pick.contains(document.querySelector(".playerChoice"))) {
-                let playerChoiceDiv = document.createElement('p');
-                playerChoiceDiv.className = "playerChoice";
-                let playerChoiceText = document.createTextNode(`${submitChoice}`);
-                playerChoiceDiv.appendChild(playerChoiceText);
-
-
-                pick.appendChild(playerChoiceDiv);
-
-            } else {
-                pick.children[0].remove();
-
-                let playerChoiceDiv = document.createElement('p');
-                playerChoiceDiv.className = "playerChoice";
-                let playerChoiceText = document.createTextNode(`${submitChoice}`);
-                playerChoiceDiv.appendChild(playerChoiceText);
-
-
-                pick.appendChild(playerChoiceDiv);
-            }
-        } else if (player === "cpu") {
-
-            let cpuChoice = document.querySelector(".cpuChoice");
-
-            if (!cpuChoice.contains(document.querySelector(".computerChoice"))) {
-                let cpuChoiceDiv = document.createElement('p');
-                cpuChoiceDiv.className = "computerChoice";
-                let cpuChoiceText = document.createTextNode(`${submitChoice}`);
-                cpuChoiceDiv.appendChild(cpuChoiceText);
-
-
-                cpuChoice.appendChild(cpuChoiceDiv);
-
-            } else {
-                cpuChoice.children[0].remove();
-
-                let cpuChoiceDiv = document.createElement('p');
-                cpuChoiceDiv.className = "computerChoice";
-                let cpuChoiceText = document.createTextNode(`${submitChoice}`);
-                cpuChoiceDiv.appendChild(cpuChoiceText);
-
-
-                cpuChoice.appendChild(cpuChoiceDiv);
-            }
+    startGame.addEventListener("click", () => {
+        if (!newGame) {
+            document.querySelector('.winner').remove();
 
         }
-
-    }
-    function oneGame(playerChoice) {
-
-
-        let computerChoice = computerPlay();
-        submit("cpu", computerChoice);
-
-        console.log(`You picked ${playerChoice}`);
-        console.log(`Computer picked ${computerChoice}`);
-
-        if (computerChoice == playerChoice) {
-            console.log(`You both picked "${computerChoice}"... Draw!`);
-            return "draw";
-
-        } else if (computerChoice === "Rock" && playerChoice === "Scissors") {
-            console.log("Computer Wins");
-            return "computer";
-        } else if (playerChoice === "Rock" && computerChoice === "Scissors") {
-            console.log("player Wins");
-            return "player";
-        } else if (playerChoice === "Scissors" && computerChoice === "Paper") {
-            console.log("player Wins");
-            return "player";
-        } else if (computerChoice === "Scissors" && playerChoice === "Paper") {
-            console.log("computer Wins");
-            return "computer";
-        } else if (computerChoice === "Paper" && playerChoice === "Rock") {
-            console.log("computer Wins");
-            return "computer";
-        } else if (playerChoice === "Paper" && computerChoice === "Rock") {
-            console.log("player Wins");
-            return "player";
-        }
-    }
-    //randomise computer pick
-    function computerPlay() {
-
-        function rand() {
-
-            let decRand = (Math.random() * 10);
-            if (decRand < 3.3) {
-                return 0;
-            } else if (decRand >= 3.3 && decRand < 6.6) {
-                return 1;
-            } else if (decRand >= 6.6) {
-                return 2;
-            }
-
-        };
-
-        let ranNumber = rand();
-        let rock = document.getElementById("rock");
-        let paper = document.getElementById("paper");
-        let scissors = document.getElementById("scissors");
-        if (ranNumber === 0) {
-            return "Rock";
-        } else if (ranNumber === 1) {
-            return "Paper";
-        } else if (ranNumber == 2) {
-            return "Scissors";
-        }
+        createPlayerChoiceBox();
+        createConfirmation();
+        createScoreBoard();
+        removeStartGameBox();
+    });
+}
 
 
-    }
+function removeStartGameBox() {
+    let startGame = document.querySelector('#start-game');
+    startGame.remove();
+}
 
-    let userScore = 0;
-    let computerScore = 0;
+//please copy above 
+function createPlayerChoiceBox() {
+
+    let playerChoice = document.createElement('div');
+    playerChoice.className = "player-choice";
+
+
+    let boxes = document.createElement('div');
+    boxes.className = "boxes";
+    boxes.id = "player-choice";
+
+    let rock = document.createElement('div');
+    rock.className = "small-box";
+    let rockText = document.createTextNode("Rock");
+    rock.appendChild(rockText);
+
+    let paper = document.createElement('div');
+    paper.className = "small-box";
+    let paperText = document.createTextNode("Paper");
+    paper.appendChild(paperText);
+
+    let scissors = document.createElement('div');
+    scissors.className = "small-box";
+    let scissorsText = document.createTextNode("Scissors");
+    scissors.appendChild(scissorsText);
+
+    let container = document.querySelector(".container");
+    container.appendChild(playerChoice);
+    playerChoice.appendChild(boxes);
 
 
 
+    boxes.appendChild(rock);
+
+    boxes.appendChild(paper);
 
 
-
-
-    // dom manipulation for images and submit button
-    let button = document.getElementById("submit");
-    let rock = document.getElementById("rock");
-    let paper = document.getElementById("paper");
-    let scissors = document.getElementById("scissors");
-
-
-    //Event Listeners
+    boxes.appendChild(scissors);
 
     rock.addEventListener("click", () => {
-        console.log("rock clicked");
-        gameChoice("rock");
+
+        console.log("Rock Clicked");
+        updatePlayerChoice("Rock");
+
+
     });
+
     paper.addEventListener("click", () => {
-        console.log("paper clicked");
-        gameChoice("paper");
+
+        console.log("Paper Clicked");
+        updatePlayerChoice("Paper");
+
     });
 
     scissors.addEventListener("click", () => {
-        console.log("scissors clicked");
-        gameChoice("scissors");
+
+        console.log("Scissors Clicked");
+        updatePlayerChoice("Scissors");
+
     });
 
-    button.addEventListener("click", submitButton);
+}
+
+function createConfirmation() {
+    let confirm = document.createElement('div');
+    confirm.className = "confirm";
+
+    let boxes = document.createElement('div');
+    boxes.className = "boxes";
+
+    let container = document.querySelector(".container");
+    container.appendChild(confirm);
+
+    let choiceTitle = document.createElement('h3');
+    choiceTitle.className = "player-choice-title";
+
+    let choiceTitleText = document.createTextNode('Choice: PlaceHolder?');
+    choiceTitle.appendChild(choiceTitleText);
+    confirm.appendChild(choiceTitle);
 
 
-    function updateScores(score1, score2) {
+    let cpuChoiceTitle = document.createElement('h3');
+    cpuChoiceTitle.className = "cpu-choice-title";
 
-        let score = document.querySelector(".scores");
-
-        if (!score.contains(document.querySelector(".newScore"))) {
-            let newScoreP = document.createElement('p');
-
-            newScoreP.className = "newScore";
-            let newScoreText = document.createTextNode(`Player Score: ${score1} CPU Score: ${score2}`);
-            newScoreP.appendChild(newScoreText);
-
-            score.appendChild(newScoreP);
-        } else {
-            score.children[0].remove();
-            let newScoreP = document.createElement('p');
-            newScoreP.className = "newScore";
-            let newScoreText = document.createTextNode(`Player Score: ${score1} CPU Score: ${score2}`);
-            newScoreP.appendChild(newScoreText);
-            score.appendChild(newScoreP);
-        }
-    }
-
-    function submitButton() {
-
-        let pick = document.querySelector(".pick");
-        let playerChoice = document.querySelector(".playerChoice");
+    let cpuChoiceTitleText = document.createTextNode('CPU Choice: PlaceHolder?');
+    cpuChoiceTitle.appendChild(cpuChoiceTitleText);
+    confirm.appendChild(cpuChoiceTitle);
 
 
+    let winnerTitle = document.createElement('h4');
+    winnerTitle.className = "round-winner";
 
-        if (!pick.contains(document.querySelector(".playerChoice"))) {
-            alert("Please choose");
-        } else {
-
-            //console.log(playerChoice.innerHTML);
-            console.log(document.querySelector(".playerChoice"))
-            let result = oneGame(playerChoice.innerHTML);
+    let winnerTitleText = document.createTextNode('Round Winner');
+    winnerTitle.appendChild(winnerTitleText);
+    confirm.appendChild(winnerTitle);
 
 
-            if (result == "draw") {
-                userScore++;
-                computerScore++;
-            } else if (result == "computer") {
-                computerScore++;
-            } else if (result == "player") {
-                userScore++;
-            }
-
-
-            updateScores(userScore, computerScore);
-
-
-            if ((userScore + computerScore) >= 5) {
-                console.log("Final Score : Computer Score: " + computerScore + " User Score: " + userScore);
-                button.removeEventListener("click", submitButton);
-            }
-        }
-
-
-        ;
-    }
+    let confirmBox = document.createElement('div');
+    confirmBox.className = 'small-box';
+    confirmBox.id = "confirm";
+    let confirmText = document.createTextNode('Confirm');
+    confirmBox.appendChild(confirmText);
 
 
 
 
+    confirm.appendChild(boxes);
 
 
+    boxes.appendChild(confirmBox);
+    confirmBox.style = "display:none";
 
 
+    confirmBox.addEventListener("click", () => {
 
+        console.log("Confirm coice of.. : " + choiceTitle.id);
+        playRound(choiceTitle.id);
 
-
-    if (computerScore > userScore) {
-        console.log(`You lose by ${computerScore - userScore} points`);
-    } else if (userScore > computerScore) {
-        console.log(`You win by ${userScore - computerScore} points`);
-    } else {
-        console.log(`It's a draw.. you both sored ${userScore}`);
-    }
+    });
 
 
 
 }
 
 
-game();
+function createScoreBoard() {
+
+    let scores = document.createElement('div');
+    scores.className = 'scores';
+
+    let boxes = document.createElement('div');
+    boxes.className = "boxes";
+
+    let container = document.querySelector(".container");
+    container.appendChild(scores);
+
+    let playerScore = document.createElement('div');
+    playerScore.className = 'score-box';
+    playerScore.id = 'player-score';
+    let playerText = document.createTextNode('0');
+    playerScore.appendChild(playerText);
+
+
+
+
+    let cpuScore = document.createElement('div');
+    cpuScore.className = 'score-box';
+    cpuScore.id = "cpu-score";
+    let cpuText = document.createTextNode('0');
+    cpuScore.appendChild(cpuText);
+
+
+    scores.appendChild(boxes);
+
+    boxes.appendChild(playerScore);
+
+    boxes.appendChild(cpuScore);
+
+
+}
+
+
+function updatePlayerChoice(choice) {
+    let choiceDiv = document.querySelector(".player-choice-title");
+    let confirmBox = document.querySelector('#confirm');
+    confirmBox.style = "display:block";
+    choiceDiv.id = choice;
+    choiceDiv.textContent = "Player Choice: " + choice;
+}
+
+
+function updateCpuChoice(choice) {
+    let choiceDiv = document.querySelector(".cpu-choice-title");
+    let confirmBox = document.querySelector('#confirm');
+    confirmBox.style = "display:block";
+    choiceDiv.id = choice;
+    choiceDiv.textContent = "CPU Choice: " + choice;
+}
+
+
+
+
+function playRound(choice) {
+
+    let playerChoice = choice;
+    let cpuChoice = getCpuChoice();
+    updateCpuChoice(cpuChoice);
+
+    console.log("Player Chose: " + playerChoice + " CPU Chose: " + cpuChoice);
+
+    let winner = decideWinner(playerChoice, cpuChoice);
+
+    updateScore(winner);
+
+}
+
+function getCpuChoice() {
+
+    const choices = ["Rock", "Paper", "Scissors"];
+
+
+
+    let max = 2;
+    let random = Math.floor(Math.random() * (max + 1));
+
+
+    return choices[random];
+
+}
+
+
+function decideWinner(playerChoice, cpuChoice) {
+
+
+    if (playerChoice == cpuChoice) {
+        return 'draw';
+    } else if (playerChoice == 'Rock' && cpuChoice == 'Paper') {
+        return 'cpu';
+    } else if (playerChoice == 'Paper' && cpuChoice == 'Rock') {
+        return 'player';
+    } else if (playerChoice == 'Rock' && cpuChoice == 'Scissors') {
+        return 'player';
+    } else if (playerChoice == 'Scissors' && cpuChoice == 'Rock') {
+        return 'cpu';
+    } else if (playerChoice == 'Paper' && cpuChoice == 'Scissors') {
+        return 'cpu';
+    } else if (playerChoice == 'Scissors' && cpuChoice == 'Paper') {
+        return 'player';
+    }
+}
+
+function updateScore(winner) {
+
+    let playerScore = document.querySelector('#player-score');
+
+    let cpuScore = document.querySelector('#cpu-score');
+
+    let actualPlayerScore = parseInt(playerScore.innerHTML);
+
+    let actualCpuScore = parseInt(cpuScore.innerHTML);
+
+
+
+
+
+
+    if (winner == 'player') {
+
+        playerScore.innerHTML = actualPlayerScore + 1;
+        updateRoundWinner('player');
+        if (actualPlayerScore + 1 == 5) {
+            endGame('Player', actualCpuScore + 1);
+
+        }
+
+    } else if (winner == 'cpu') {
+        cpuScore.innerHTML = actualCpuScore + 1;
+        updateRoundWinner('cpu');
+        if (actualCpuScore + 1 == 5) {
+            endGame('Computer', actualCpuScore + 1);
+        }
+    } else if (winner == 'draw') {
+        updateRoundWinner('draw');
+    }
+
+}
+
+function endGame(winner, score) {
+    let playerChoice = document.querySelector('.player-choice');
+    let confirm = document.querySelector('.confirm');
+    let scores = document.querySelector('.scores');
+    playerChoice.remove();
+    confirm.remove();
+    scores.remove();
+
+    let showWinner = document.createElement('div');
+    showWinner.className = 'winner';
+    let winnerText = document.createTextNode('Winner: ' + winner + " Score: " + score);
+    showWinner.appendChild(winnerText);
+
+    let container = document.querySelector(".container");
+    container.appendChild(showWinner);
+
+
+
+
+    createStartGameBox(false);
+
+
+
+
+}
+
+
+function updateRoundWinner(winner) {
+
+    let roundWinner = document.querySelector('.round-winner');
+    console.log('hello luke');
+    roundWinner.innerHTML = 'Round Winner: ' + winner;
+
+}
+
+// /*
+// Creates boxes add in string to id div
+// */
+// function createBoxes(id) {
+
+//     let boxes = document.createElement('div');
+//     boxes.className = "boxes";
+
+//     if (id.length > 1) {
+//         boxes.id = id;
+//     }
+
+// }
